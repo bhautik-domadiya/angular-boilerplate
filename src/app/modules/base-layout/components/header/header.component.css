@@ -1,0 +1,16 @@
+a:link, a:visited {
+  border-radius: 5%;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+h1 {
+  font-weight: bolder;
+}
+
+a:hover, a:active {
+  border-bottom: 2px solid black;
+}

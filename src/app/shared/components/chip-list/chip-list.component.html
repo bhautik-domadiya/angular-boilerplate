@@ -1,0 +1,10 @@
+<ul>
+  <ng-container *ngIf="isVisibleClose;else withOutClose">
+    <li *ngFor="let chip of dataList;let rootIndex=index;">{{chip | noData}}
+      <button (click)="removeItem(chip,rootIndex)">Delete</button>
+    </li>
+  </ng-container>
+  <ng-template #withOutClose>
+    <li *ngFor="let chip of dataList;">{{chip | noData}}</li>
+  </ng-template>
+</ul>

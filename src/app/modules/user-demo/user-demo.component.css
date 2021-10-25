@@ -1,0 +1,46 @@
+button:hover{
+  cursor: pointer;
+}
+
+table > tr > th {
+  border-bottom: 3px solid #0db3f1;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
+}
+
+table > tr > td {
+  border: 1px solid black;
+  margin: 2px;
+}
+
+table > tr > td > button {
+  background: #0db3f1;
+  border: none;
+  padding: 6px;
+  font-weight: bolder;
+  border-radius: 5px;
+}
+
+table > tr > td > button:hover {
+  color: white;
+}
+
+input {
+  margin: 2px;
+  padding: 10px;
+}
+
+form > button {
+  background: #0db3f1;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-weight: bolder;
+  border-radius: 5px;
+}
+
+form > button:hover {
+  color: black;
+}

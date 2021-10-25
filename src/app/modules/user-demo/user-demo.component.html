@@ -1,0 +1,74 @@
+<!--<app-chip-list [dataList]="userNameList"></app-chip-list>-->
+<!--<app-chip-list [dataList]="userNameList" isVisibleClose="true"></app-chip-list>-->
+<div style="text-align: center">
+  <h1 style="font-weight: bolder">{{userEditIndex > -1 ? 'Update' : 'Create'}} User Form</h1>
+</div>
+
+<div style="text-align: center">
+  <form [formGroup]="UserForm" (ngSubmit)="userFormHandler()">
+    <div style="display: flex; justify-content: center;margin: 5px;">
+      <div>
+        <input type="text" placeholder="name" formControlName="name"/>
+        <p *ngIf="controls.name?.invalid && (controls.name.dirty || controls.name.touched)">
+          <span *ngIf="controls.name.errors.required">Name is Required</span>
+          <span *ngIf="controls.name.errors.pattern">Please Check Name</span>
+        </p>
+      </div>
+      <input type="text" placeholder="userName" formControlName="userName"/>
+      <input type="text" placeholder="phone" formControlName="phone"/>
+    </div>
+    <div style="display: flex; justify-content: center;margin: 5px;">
+      <input type="text" placeholder="email" formControlName="email"/> <br/>
+      <input type="text" placeholder="website" formControlName="website"/> <br/>
+    </div>
+    <button type="submit" [disabled]="UserForm.invalid || isLoading">{{userEditIndex > -1 ? 'Update' : 'Create'}} User
+    </button>
+    <button *ngIf="userEditIndex > -1" style="margin-left: 10px" (click)="userEditIndex = -1">Cancel Update</button>
+  </form>
+</div>
+
+<div style="text-align: center;margin-top: 10px;">
+  <h1 style="font-weight: bolder">Display User Data</h1>
+</div>
+
+
+<div style="width: 100%;display: flex;justify-content: center;height:240px;overflow-y: auto;position: relative">
+  <table *ngIf="!loadUser;else loadTemplateUser">
+    <tr>
+      <th>Name</th>
+      <th>User Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Website</th>
+      <th>Update</th>
+      <th>Delete</th>
+      <th>Update</th>
+      <th>Delete</th>
+    </tr>
+    <tr *ngFor="let user of userList;let userIndex=index">
+      <td>{{user.name | noData}}</td>
+      <td>{{user.userName | noData}}</td>
+      <td>{{user.email | noData}}</td>
+      <td>{{user.phone | noData}}</td>
+      <td>{{user.website | noData}}</td>
+      <td>
+        <button (click)="updateUser(user.id, userIndex)" [disabled]="isLoading || userEditIndex > -1">Update</button>
+      </td>
+      <td>
+        <button (click)="deleteUser(user.id, userIndex)" [disabled]="isLoading || userEditIndex > -1">Delete</button>
+      </td>
+      <td>
+        <button (click)="updateUser(user.id, userIndex)" [disabled]="isLoading || userEditIndex > -1">Update</button>
+      </td>
+      <td>
+        <button (click)="deleteUser(user.id, userIndex)" [disabled]="isLoading || userEditIndex > -1">Delete</button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<ng-template #loadTemplateUser>
+  <h1> Loading User</h1>
+</ng-template>
+
+
